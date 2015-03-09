@@ -8,9 +8,9 @@ public class FizzBuzz {
 		}
 		
 		String result = "";
-		if (isDivisbleByThree(number) && isDivisibleByFive(number)) {
+		if (isDivisibleByThree(number) && isDivisibleByFive(number)) {
 			result = "FizzBuzz";
-		} else if (isDivisbleByThree(number)) {
+		} else if (isDivisibleByThree(number)) {
 			result = "Fizz";
 		} else if (isDivisibleByFive(number)) {
 			result = "Buzz";
@@ -20,7 +20,7 @@ public class FizzBuzz {
 		return result;
 	}
 	
-	private boolean isDivisbleByThree(int number) {
+	private boolean isDivisibleByThree(int number) {
 		return number % 3 == 0;
 	}
 	
