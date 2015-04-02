@@ -1,2 +1,2 @@
 # Kata
-Implementations of well-known programming exercices with TDD
+Implementations of well-known programming exercises with TDD
