@@ -1,0 +1,12 @@
+{
+  "name": "HarryPotter",
+  "version": "1.0.0",
+  "description": "https://github.com/nicolaspayot/Kata/tree/master/HarryPotter",
+  "author": "Nicolas Payot",
+  "scripts": {
+    "test": "./node_modules/cucumber/bin/cucumber.js"
+  },
+  "dependencies": {
+    "cucumber": "^0.4.8"
+  }
+}
