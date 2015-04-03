@@ -1,9 +1,13 @@
 'use strict';
 
 module.exports = function() {
-  this.books = [];
+  var books = [];
+
+  this.isEmpty = function() {
+    return books.length === 0;
+  };
 
   this.addBook = function(book) {
-    this.books.push(book);
+    books.push(book);
   };
 };
