@@ -10,4 +10,8 @@ module.exports = function() {
   this.addBook = function(book) {
     books.push(book);
   };
+
+  this.getBookQuantity = function() {
+    return books.length;
+  };
 };
