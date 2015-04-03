@@ -11,7 +11,7 @@ module.exports = function() {
 
   this.Given(/^I have an empty cart$/, function (callback) {
     cart = new ShoppingCart();
-    assert.equal(cart.books.length, 0);
+    assert.equal(cart.isEmpty(), true);
     callback();
   });
 
