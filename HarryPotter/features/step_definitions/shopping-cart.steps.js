@@ -1,7 +1,6 @@
 'use strict';
 
 var assert = require('assert');
-var Book = require('../../script/book');
 
 module.exports = function() {
 
@@ -12,7 +11,7 @@ module.exports = function() {
 
   this.When(/^I add (\d+) book to the cart$/, function (count, callback) {
     for (var i = 0; i < Number(count); ++i) {
-      this.cart.addBook(new Book("Harry Potter, volume 1"));
+      this.cart.addBook("Harry Potter, volume 1");
     }
     callback();
   });

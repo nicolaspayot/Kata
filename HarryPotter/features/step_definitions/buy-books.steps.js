@@ -1,13 +1,12 @@
 'use strict';
 
 var assert = require('assert');
-var Book = require('../../script/book');
 
 module.exports = function() {
 
-  this.Given(/^I want to buy (\d+) copies of "([^"]*)"$/, function (count, title, callback) {
+  this.Given(/^I want to buy (\d+) copies of "([^"]*)"$/, function (count, book, callback) {
     for (var i = 0; i < count; ++i) {
-      this.books.push(new Book(title));
+      this.books.push(book);
     }
     callback();
   });

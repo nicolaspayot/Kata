@@ -1,4 +1,4 @@
-  'use strict';
+'use strict';
 
 module.exports = function() {
 
@@ -21,11 +21,11 @@ module.exports = function() {
   var getBookCount = function() {
     var bookCount = {};
     books.forEach(function(book) {
-      var count = bookCount[book.title];
+      var count = bookCount[book];
       if (typeof count === 'undefined') {
-        bookCount[book.title] = 0;
+        bookCount[book] = 0;
       }
-      ++bookCount[book.title];
+      ++bookCount[book];
     });
     return bookCount;
   };
@@ -33,12 +33,12 @@ module.exports = function() {
   this.getTotal = function() {
     var bookCount = getBookCount();
 
-    var titles = Object.keys(bookCount);
-    var total = titles.reduce(function(total, title) {
-      return total + bookCount[title] * 8.0;
+    var bookSet = Object.keys(bookCount);
+    var total = bookSet.reduce(function(total, book) {
+      return total + bookCount[book] * 8.0;
     }, 0);
 
-    var discount = discounts[titles.length];
+    var discount = discounts[bookSet.length];
     if (discount) {
       total -= total * discount;
     }
