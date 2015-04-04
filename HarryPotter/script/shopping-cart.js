@@ -31,16 +31,27 @@ module.exports = function() {
   };
 
   this.getTotal = function() {
+    var total = 0;
+
     var bookCount = getBookCount();
-
     var bookSet = Object.keys(bookCount);
-    var total = bookSet.reduce(function(total, book) {
-      return total + bookCount[book] * 8.0;
-    }, 0);
+    var unitCount = 0;
 
-    var discount = discounts[bookSet.length];
-    if (discount) {
-      total -= total * discount;
+    while ((unitCount = bookSet.length) > 0) {
+
+      var subTotal = unitCount * 8.0;
+      var discount = discounts[unitCount];
+      if (discount) {
+        subTotal -= subTotal * discount;
+      }
+      total += subTotal;
+
+      bookSet.forEach(function(book) {
+        if (--bookCount[book] === 0) {
+          delete bookCount[book];
+        }
+      });
+      bookSet = Object.keys(bookCount);
     }
 
     return total;
