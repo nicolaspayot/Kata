@@ -19,8 +19,8 @@ module.exports = function() {
     callback();
   });
 
-  this.Then(/^I must pay (\d+) euros$/, function (arg1, callback) {
-    assert.equal(this.cart.getTotal(), Number(arg1));
+  this.Then(/^I must pay "([^"]*)" euros$/, function (total, callback) {
+    assert.equal(this.cart.getTotal(), Number(total));
     callback();
   });
 };
