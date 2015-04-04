@@ -2,7 +2,7 @@
 
 module.exports = function() {
 
-  var discounts = { 2: 0.05, 3: 0.1, 4: 0.2, 5: 0.25 };
+  var discounts = { 1: 0.0, 2: 0.05, 3: 0.1, 4: 0.2, 5: 0.25 };
 
   var books = [];
 
@@ -31,12 +31,7 @@ module.exports = function() {
   };
 
   var getTotalUnits = function(unitCount) {
-    var total = unitCount * 8.0;
-    var discount = discounts[unitCount];
-    if (discount) {
-      total -= total * discount;
-    }
-    return total;
+    return (unitCount * 8.0) * (1 - discounts[unitCount]);
   };
 
   this.getTotal = function() {
