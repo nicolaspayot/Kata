@@ -25,3 +25,12 @@ Feature: Buy books
     And I want to buy 1 copies of "Harry Potter, volume 3"
     When I add books to the cart
     Then I must pay "29.60" euros
+
+  Scenario: buy lots of books!
+    Given I want to buy 4 copies of "Harry Potter, volume 1"
+    And I want to buy 3 copies of "Harry Potter, volume 2"
+    And I want to buy 2 copies of "Harry Potter, volume 3"
+    And I want to buy 1 copies of "Harry Potter, volume 4"
+    And I want to buy 5 copies of "Harry Potter, volume 5"
+    When I add books to the cart
+    Then I must pay "100.4" euros
