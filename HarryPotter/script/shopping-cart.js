@@ -30,6 +30,15 @@ module.exports = function() {
     return bookCount;
   };
 
+  var getTotalUnits = function(unitCount) {
+    var total = unitCount * 8.0;
+    var discount = discounts[unitCount];
+    if (discount) {
+      total -= total * discount;
+    }
+    return total;
+  };
+
   this.getTotal = function() {
     var total = 0;
 
@@ -39,12 +48,7 @@ module.exports = function() {
 
     while ((unitCount = bookSet.length) > 0) {
 
-      var subTotal = unitCount * 8.0;
-      var discount = discounts[unitCount];
-      if (discount) {
-        subTotal -= subTotal * discount;
-      }
-      total += subTotal;
+      total += getTotalUnits(unitCount);
 
       bookSet.forEach(function(book) {
         if (--bookCount[book] === 0) {
