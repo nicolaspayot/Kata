@@ -8,16 +8,21 @@ var Book = require(scriptPath + '/book');
 module.exports = function() {
 
   var cart;
-  var book;
+  var books;
 
   this.Given(/^I want to buy (\d+) copies of "([^"]*)"$/, function (count, title, callback) {
-    book = new Book(title);
+    books = [];
+    for (var i = 0; i < count; ++i) {
+      books.push(new Book(title));
+    }
     callback();
   });
 
   this.When(/^I add books to the cart$/, function (callback) {
     cart = new ShoppingCart();
-    cart.addBook(book);
+    books.forEach(function(book) {
+      cart.addBook(book);
+    });
     callback();
   });
 
