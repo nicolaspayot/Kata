@@ -22,7 +22,7 @@ module.exports = function() {
   });
 
   this.Then(/^I must pay (\d+) euros$/, function (arg1, callback) {
-    assert.equal(cart.getTotal(), 8);
+    assert.equal(cart.getTotal(), Number(arg1));
     callback();
   });
 };

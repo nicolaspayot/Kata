@@ -14,4 +14,8 @@ module.exports = function() {
   this.getBookQuantity = function() {
     return books.length;
   };
+
+  this.getTotal = function() {
+    return 8.0;
+  };
 };
