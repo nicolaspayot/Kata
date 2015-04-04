@@ -3,7 +3,7 @@ Feature: Buy books
   I want to get the total price (including discounts if any)
   So that I can buy them
 
-  Scenario: buy 1 book without discount
-    Given I want to buy "Harry Potter, volume 1"
-    When I add it to the cart
+  Scenario: buy 1 copy of a book (no discount)
+    Given I want to buy 1 copy of "Harry Potter, volume 1"
+    When I add books to the cart
     Then I must pay 8 euros

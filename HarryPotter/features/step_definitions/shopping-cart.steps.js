@@ -15,15 +15,15 @@ module.exports = function() {
     callback();
   });
 
-  this.When(/^I add (\d+) book to the cart$/, function (arg1, callback) {
-    for (var i = 0; i < Number(arg1); ++i) {
+  this.When(/^I add (\d+) book to the cart$/, function (count, callback) {
+    for (var i = 0; i < Number(count); ++i) {
       cart.addBook(new Book("Harry Potter, volume 1"));
     }
     callback();
   });
 
-  this.Then(/^The cart contains (\d+) book$/, function (arg1, callback) {
-    assert.equal(cart.getBookQuantity(), Number(arg1));
+  this.Then(/^The cart contains (\d+) book$/, function (quantity, callback) {
+    assert.equal(cart.getBookQuantity(), Number(quantity));
     callback();
   });
 }

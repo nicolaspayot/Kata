@@ -10,12 +10,12 @@ module.exports = function() {
   var cart;
   var book;
 
-  this.Given(/^I want to buy "([^"]*)"$/, function (arg1, callback) {
-    book = new Book(arg1);
+  this.Given(/^I want to buy (\d+) copy of "([^"]*)"$/, function (count, title, callback) {
+    book = new Book(title);
     callback();
   });
 
-  this.When(/^I add it to the cart$/, function (callback) {
+  this.When(/^I add books to the cart$/, function (callback) {
     cart = new ShoppingCart();
     cart.addBook(book);
     callback();
