@@ -16,6 +16,8 @@ module.exports = function() {
   };
 
   this.getTotal = function() {
-    return 8.0;
+    return books.reduce(function(total, book) {
+      return total + book.price;
+    }, 0);
   };
 };
