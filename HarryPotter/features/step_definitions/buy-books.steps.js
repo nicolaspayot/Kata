@@ -10,7 +10,7 @@ module.exports = function() {
   var cart;
   var book;
 
-  this.Given(/^I want to buy (\d+) copy of "([^"]*)"$/, function (count, title, callback) {
+  this.Given(/^I want to buy (\d+) copies of "([^"]*)"$/, function (count, title, callback) {
     book = new Book(title);
     callback();
   });
