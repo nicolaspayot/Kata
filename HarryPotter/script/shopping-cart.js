@@ -53,6 +53,6 @@ module.exports = function() {
       bookSet = Object.keys(bookCount);
     }
 
-    return total;
+    return total.toFixed(2);
   };
 };
