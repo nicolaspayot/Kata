@@ -26,11 +26,20 @@ Feature: Buy books
     When I add books to the cart
     Then I must pay "29.60" euros
 
-  Scenario: buy lots of books!
-    Given I want to buy 4 copies of "Harry Potter, volume 1"
-    And I want to buy 3 copies of "Harry Potter, volume 2"
-    And I want to buy 2 copies of "Harry Potter, volume 3"
-    And I want to buy 1 copies of "Harry Potter, volume 4"
-    And I want to buy 5 copies of "Harry Potter, volume 5"
+  Scenario Outline: buy lots of books!
+    Given I want to buy <nbH1> copies of "Harry Potter, volume 1"
+    And I want to buy <nbH2> copies of "Harry Potter, volume 2"
+    And I want to buy <nbH3> copies of "Harry Potter, volume 3"
+    And I want to buy <nbH4> copies of "Harry Potter, volume 4"
+    And I want to buy <nbH5> copies of "Harry Potter, volume 5"
     When I add books to the cart
-    Then I must pay "100.4" euros
+    Then I must pay "<total>" euros
+
+    Examples:
+      | nbH1  | nbH2  | nbH3  | nbH4  | nbH5  | total   |
+      | 5     | 4     | 3     | 2     | 1     | 100.40  |
+      | 4     | 3     | 2     | 1     | 0     | 70.40   |
+      | 3     | 2     | 1     | 0     | 5     | 78.40   |
+      | 2     | 1     | 0     | 5     | 4     | 85.60   |
+      | 1     | 0     | 5     | 4     | 3     | 92.00   |
+      | 0     | 5     | 4     | 3     | 2     | 96.00   |
