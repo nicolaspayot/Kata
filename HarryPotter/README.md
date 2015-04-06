@@ -11,5 +11,5 @@ in a bookstore, given 5 different books and the following rules:
 http://codingdojo.org/cgi-bin/index.pl?KataPotter
 
 ##Also
-Goal is to get a taste of Cucumber.js with BDD. I'll try to show the different steps with the commits.
+Goal is to get a taste of Cucumber.js with BDD. I'll try to show the different steps with the commits.<br>
 Execute `npm install` to get Cucumber.js and `npm test` to run the tests.
