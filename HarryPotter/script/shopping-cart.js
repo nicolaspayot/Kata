@@ -2,9 +2,13 @@
 
 module.exports = function() {
 
-  var discounts = { 1: 0.0, 2: 0.05, 3: 0.1, 4: 0.2, 5: 0.25 };
-
   var books = [];
+  // Number of orders per book
+  var bookCount = {};
+
+  var discountRates = { 1: 1, 2: 0.95, 3: 0.90, 4: 0.80, 5: 0.75 };
+  // Number of sets of different books
+  var discounts = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 };
 
   this.isEmpty = function() {
     return books.length === 0;
@@ -18,8 +22,7 @@ module.exports = function() {
     return books.length;
   };
 
-  var getBookCount = function() {
-    var bookCount = {};
+  var setBookCount = function() {
     books.forEach(function(book) {
       var count = bookCount[book];
       if (typeof count === 'undefined') {
@@ -27,23 +30,14 @@ module.exports = function() {
       }
       ++bookCount[book];
     });
-    return bookCount;
   };
 
-  var getTotalUnits = function(unitCount) {
-    return (unitCount * 8.0) * (1 - discounts[unitCount]);
-  };
-
-  this.getTotal = function() {
-    var total = 0;
-
-    var bookCount = getBookCount();
+  var setDiscounts = function() {
     var bookSet = Object.keys(bookCount);
-    var unitCount = 0;
+    var maxDiscount = 0;
 
-    while ((unitCount = bookSet.length) > 0) {
-
-      total += getTotalUnits(unitCount);
+    while ((maxDiscount = bookSet.length) > 0) {
+      ++discounts[maxDiscount];
 
       bookSet.forEach(function(book) {
         if (--bookCount[book] === 0) {
@@ -52,7 +46,26 @@ module.exports = function() {
       });
       bookSet = Object.keys(bookCount);
     }
+  };
 
+  // Discount is higher with 2 sets of 4 different books than with 1 set of 5 and 1 set of 3
+  var optimizeDiscounts = function() {
+    while (discounts[5] > 0 && discounts[3] > 0) {
+      --discounts[5];
+      --discounts[3];
+      discounts[4] += 2;
+    }
+  };
+
+  this.getTotal = function() {
+    setBookCount();
+    setDiscounts();
+    optimizeDiscounts();
+
+    var total = 0;
+    for (var count = 1; count < 6; ++count) {
+      total += 8.0 * count * discounts[count] * discountRates[count];
+    }
     return total.toFixed(2);
   };
 };
