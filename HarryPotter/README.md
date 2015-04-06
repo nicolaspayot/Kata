@@ -12,3 +12,4 @@ http://codingdojo.org/cgi-bin/index.pl?KataPotter
 
 ##Also
 Goal is to get a taste of Cucumber.js with BDD. I'll try to show the different steps with the commits.
+<p>Execute `npm install` to get Cucumber.js and `npm test` to run the tests.</p>
